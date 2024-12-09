@@ -277,14 +277,14 @@ def ingresar_nombre():
             if event.type == pygame.KEYDOWN:
                 if texto_activo:
 
-                    if event.key == pygame.K_RETURN:  # Presionar Enter para confirmar
+                    if event.key == pygame.K_RETURN:  # Presionamos Enter para confirmar
                         guardar_nombre_y_puntaje_en_json(nombre, 0)
                         return nombre
                     
-                    elif event.key == pygame.K_BACKSPACE:  # Borrar el último carácter
+                    elif event.key == pygame.K_BACKSPACE:  # Borra la ultima letra ingresada
                         nombre = nombre[:-1]
                     else:
-                        # Agregar solo caracteres alfabéticos y limitar a 15 caracteres
+                        # Limitamos a 10 letras y solo acepta letras
                         if len(nombre) < 10 and event.unicode.isalpha():
                             nombre += event.unicode
 
