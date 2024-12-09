@@ -64,16 +64,16 @@ def manejar_colisiones():
             # Obtener los datos del enemigo (sin explosión, solo los datos básicos)
             enemigo_data = dict_enemies[enemy["tipo"]]
 
-            # Crear el rectángulo del enemigo usando el ancho y la altura del diccionario
+            # Crear el rectangulo del enemigo usando el ancho y la altura del diccionario
             enemy_rect = pygame.Rect(enemy["x"], enemy["y"], enemigo_data["ancho"], enemigo_data["altura"])
 
-            # Colisión
-            if bala_rect.colliderect(enemy_rect):  # Verifica la colisión
+            # Colision
+            if bala_rect.colliderect(enemy_rect):  # Verificamos colision
                 enemy["salud"] -= 1
                 balas_a_eliminar.append(bala)
 
                 if enemy["salud"] <= 0:
-                    # Dependiendo del tipo de enemigo, elige las imágenes de explosión correspondientes
+                    # Dependiendo del tipo de enemigo eligimos las imagenes de explosion
                     if enemy["tipo"] == "jefe":
                         explosion_img = img_explosion_jefe
                     elif enemy["tipo"] == "comandante":
@@ -85,8 +85,8 @@ def manejar_colisiones():
                         "x": enemy["x"], 
                         "y": enemy["y"],
                         "tipo": enemy["tipo"], 
-                        "frame": 0,  # Inicio de la animación
-                        "explosion_img": explosion_img  # Añadir las imágenes de explosión
+                        "frame": 0,  # Inicio de la animacio
+                        "explosion_img": explosion_img  # Añadir las imágenes de explosion
                     })
 
                     explosion_sonido.play()
@@ -187,10 +187,7 @@ def pantalla_bienvenida():
             nombre = ingresar_nombre()
 
             return nombre
-            
-        # if crear_boton(pantalla, "Ranking", ANCHO // 2 - 100, ALTURA // 2 + 20, 200, 50, GRIS_CLARO, GRIS_OSCURO, NEGRO, fuente):
-        #     # pausa = False
-        #     pass
+          
         if crear_boton(pantalla, "Salir", ANCHO // 2 - 100, ALTURA // 2 + 100, 200, 50, GRIS_CLARO, GRIS_OSCURO, NEGRO, fuente):
             pygame.quit()
             exit()
